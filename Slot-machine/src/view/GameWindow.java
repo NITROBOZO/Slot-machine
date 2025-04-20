@@ -7,9 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -26,6 +29,7 @@ public class GameWindow extends JFrame {
     private JLabel lblVincita;
     private JLabel lblMonete;
     private JButton btnGioca;
+    private JLabel lblPng;
     
 
     
@@ -84,7 +88,11 @@ public class GameWindow extends JFrame {
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	setContentPane(contentPane);
 	contentPane.setLayout(new GridLayout(3, 4, 5, 0));
-	contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
+	ImageIcon image = new ImageIcon(getClass().getResource("OK.png"));
+	ImageIcon scaledImage = new ImageIcon(image.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+	lblPng = new JLabel(scaledImage);
+	
+	contentPane.add(lblPng);
 	contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
 	contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
 	contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
@@ -119,6 +127,7 @@ public class GameWindow extends JFrame {
 	btnGioca = new JButton("GO!");
 	btnGioca.setBackground(new Color(255, 255, 255));
 	btnGioca.setFont(new Font("Tahoma", Font.PLAIN, 30));
+	btnGioca.setFocusPainted(false);
 	contentPane.add(btnGioca);
 	contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
 	
