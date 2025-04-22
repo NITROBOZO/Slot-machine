@@ -32,6 +32,7 @@ public class GameWindow extends JFrame {
 	private JLabel lblPng;
 	private JLabel lblPng2;
 	private JLabel lblGif;
+	private ImageIcon image;
 	
 	public JTextField getBox1() {
 		return box1;
@@ -69,6 +70,7 @@ public class GameWindow extends JFrame {
 		return lblGif;
 	}
 	
+	
 	public GameWindow() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +82,7 @@ public class GameWindow extends JFrame {
 		contentPane.setLayout(new GridLayout(3, 4, 5, 0));
 		
 		lblPng = new JLabel();
-		ImageIcon image = new ImageIcon(GameWindow.class.getResource("/view/OK1.png"));
+		image = new ImageIcon(GameWindow.class.getResource("/view/OK1.png"));
 		Image scaledImage = image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblPng.setIcon(new ImageIcon(scaledImage));
 		lblPng.setVisible(false);
@@ -183,8 +185,29 @@ public class GameWindow extends JFrame {
 		else if(i.getClass()==JTextField.class) {
 			JTextField j = (JTextField) i;
 			j.setFont(new Font("Tahoma", Font.PLAIN, Math.max(8, w / 20)));
-			
 		}
+	}
+	public void resetImg1() {
+		image = new ImageIcon(GameWindow.class.getResource("/view/OK1.png"));
+		Image scaledImage = image.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
+				/ 3, Image.SCALE_DEFAULT);
+		lblPng.setIcon(new ImageIcon(scaledImage));
+	}
+	public void updateImg1() {
+		Double n;
+			n = Math.random();
+			if(n<=0.333) {
+				image = new ImageIcon(GameWindow.class.getResource("/view/OK1.png"));
+			}
+			else if(n<=0.666) {
+				image = new ImageIcon(GameWindow.class.getResource("/view/OK2.png"));
+			}
+			else {
+				image = new ImageIcon(GameWindow.class.getResource("/view/OK3.gif"));
+			}
+			Image scaledImage = image.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
+					/ 3, Image.SCALE_DEFAULT);
+			lblPng.setIcon(new ImageIcon(scaledImage));
 	}
 	
 }

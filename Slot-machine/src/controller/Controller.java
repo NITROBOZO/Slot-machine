@@ -2,8 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 import javax.swing.SwingUtilities;
 
@@ -29,12 +27,13 @@ public class Controller implements ActionListener {
 		window.getLblPng().setVisible(false);
 		window.getLblPng2().setVisible(false);
 		window.getBtnGioca().setEnabled(false);
+		window.updateImg1();
 		slot.gioca();
-		new Thread(() -> {
+		new Thread(() -> {//cosi chiamando la sleep non vado a toccare il tread della gui
 			for (int i = 0; i < 11; i++) {
 				int cc = i;
 				String txt = "GIOCANDO";
-				SwingUtilities.invokeLater(() -> {
+				SwingUtilities.invokeLater(() -> {//invokelater per andare a chiamare il prima possibile questo codice
 					if (cc == 0 || cc == 4 || cc == 8) {
 						window.getLblVincita().setText(txt);
 					} else if (cc == 1 || cc == 5 || cc == 9) {
@@ -73,6 +72,7 @@ public class Controller implements ActionListener {
 				window.getLblPng().setVisible(true);
 				window.getLblVincita().setText("<html><center>HAI<br> VINTO 3 MONETE!</center></html>");
 			} else {
+				window.resetImg1();
 				window.getLblPng().setVisible(true);
 				window.getLblPng2().setVisible(true);
 				window.getLblGif().setVisible(true);
