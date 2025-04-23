@@ -81,17 +81,22 @@ public class GameWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 4, 5, 0));
 		
+		
+		contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
+		
+		
 		lblPng = new JLabel();
 		image = new ImageIcon(GameWindow.class.getResource("/view/OK1.png"));
 		Image scaledImage = image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblPng.setIcon(new ImageIcon(scaledImage));
 		lblPng.setVisible(false);
-		
-		Component rigidArea = Box.createRigidArea(new Dimension(0, 0));
-		contentPane.add(rigidArea);
+		lblPng.setHorizontalAlignment(JLabel.CENTER);
 		contentPane.add(lblPng);
+		
+		
 		contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
 		contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
+		
 		
 		box1 = new JTextField();
 		box1.setEnabled(false);
@@ -131,6 +136,7 @@ public class GameWindow extends JFrame {
 		Image scaledGif = gif.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblGif.setIcon(new ImageIcon(scaledGif));
 		lblGif.setVisible(false);
+		lblGif.setHorizontalAlignment(JLabel.CENTER);
 		contentPane.add(lblGif);
 		
 		lblVincita = new JLabel("");
@@ -144,6 +150,7 @@ public class GameWindow extends JFrame {
 		Image scaledImage2 = image2.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblPng2.setIcon(new ImageIcon(scaledImage2));
 		lblPng2.setVisible(false);
+		lblPng2.setHorizontalAlignment(JLabel.CENTER);
 		contentPane.add(lblPng2);
 		
 		lblMonete = new JLabel("Monete: ");
@@ -152,6 +159,7 @@ public class GameWindow extends JFrame {
 		lblMonete.setForeground(Color.WHITE);
 		contentPane.add(lblMonete);
 		setBackground(Color.BLACK);
+		setMinimumSize(new Dimension(450,300));
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
@@ -176,15 +184,15 @@ public class GameWindow extends JFrame {
 		int w = contentPane.getWidth();
 		if(i.getClass()==JLabel.class) {
 			 JLabel j = (JLabel) i;
-			 j.setFont(new Font("Tahoma", Font.PLAIN, Math.max(8, w / 40)));
+			 j.setFont(new Font("Tahoma", Font.PLAIN, Math.min(41, w / 40)));
 		}
 		else if(i.getClass()==JButton.class) {
 			JButton j = (JButton) i;
-			j.setFont(new Font("Tahoma", Font.PLAIN, Math.max(8, w / 15)));
+			j.setFont(new Font("Tahoma", Font.PLAIN, Math.min(100, w / 15)));
 		}
 		else if(i.getClass()==JTextField.class) {
 			JTextField j = (JTextField) i;
-			j.setFont(new Font("Tahoma", Font.PLAIN, Math.max(8, w / 20)));
+			j.setFont(new Font("Tahoma", Font.PLAIN, Math.min(98, w / 20)));
 		}
 	}
 	public void resetImg1() {
