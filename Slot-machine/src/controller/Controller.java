@@ -29,7 +29,7 @@ public class Controller implements ActionListener {
 		window.getBtnGioca().setEnabled(false);
 		window.updateImg1();
 		slot.gioca();
-		new Thread(() -> {//cosi chiamando la sleep non vado a toccare il tread della gui
+		new Thread(() -> {//cosi chiamando la sleep non vado a toccare il thread della gui
 			for (int i = 0; i < 11; i++) {
 				int cc = i;
 				String txt = "GIOCANDO";
