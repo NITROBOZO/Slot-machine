@@ -82,7 +82,7 @@ public class GameWindow extends JFrame {
 		contentPane.setLayout(new GridLayout(3, 4, 5, 0));
 		
 		
-		contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
+		contentPane.add(new JLabel());
 		
 		
 		lblPng = new JLabel();
@@ -94,8 +94,8 @@ public class GameWindow extends JFrame {
 		contentPane.add(lblPng);
 		
 		
-		contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
-		contentPane.add(Box.createRigidArea(new Dimension(0, 0)));
+		contentPane.add(new JLabel());
+		contentPane.add(new JLabel());
 		
 		
 		box1 = new JTextField();
