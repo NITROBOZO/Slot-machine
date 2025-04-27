@@ -13,7 +13,7 @@ public class SlotMachine {
 	
 	public void generaNumeri() {
 		for (int i = 0; i < numeri.length; i++) {
-			numeri[i] = (int) (Math.random() * 10);
+			numeri[i] = 1;//(int) (Math.random() * 10);
 		}
 	}
 	

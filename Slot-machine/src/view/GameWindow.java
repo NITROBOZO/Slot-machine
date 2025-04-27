@@ -172,9 +172,7 @@ public class GameWindow extends JFrame {
 		});
 	}
 	private void fontSet(JLabel lbl, ImageIcon i) {
-		Image scaledImage = i.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
-				/ 3, Image.SCALE_DEFAULT);
-
+		Image scaledImage = scalaImg(i);
 		lbl.setIcon(new ImageIcon(scaledImage));
 		}
 	private void fontSet(Object i) {
@@ -193,9 +191,9 @@ public class GameWindow extends JFrame {
 		}
 	}
 	public void resetImg1() {
-		Image scaledImage = IMG[0].getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
-				/ 3, Image.SCALE_DEFAULT);
-		lblPng.setIcon(new ImageIcon(scaledImage));
+	    updatingImg = IMG[0];
+	    Image scaledImage = scalaImg(updatingImg);
+	    lblPng.setIcon(new ImageIcon(scaledImage));
 	}
 	public void updateImg1() {
 		Double n;
