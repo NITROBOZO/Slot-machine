@@ -30,7 +30,7 @@ public class GameWindow extends JFrame {
 	private JLabel lblPng;
 	private JLabel lblPng2;
 	private JLabel lblGif;
-	private ImageIcon updatingImage;
+	private ImageIcon updatingImg;
 	
 	public JTextField getBox1() {
 		return box1;
@@ -70,7 +70,7 @@ public class GameWindow extends JFrame {
 	
 	
 	public GameWindow() {
-	    	updatingImage = IMG[0];
+	    	updatingImg = IMG[0];
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -159,7 +159,7 @@ public class GameWindow extends JFrame {
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
-				fontSet(lblPng,updatingImage);
+				fontSet(lblPng,updatingImg);
 				fontSet(lblPng2,IMG[1]);
 				fontSet(lblGif,IMG[2]);
 				fontSet(box1);
@@ -201,17 +201,20 @@ public class GameWindow extends JFrame {
 		Double n;
 			n = Math.random();
 			if(n<=0.333) {
-				updatingImage = IMG[0];
+				updatingImg = IMG[0];
 			}
 			else if(n<=0.666) {
-				updatingImage = IMG[1];
+				updatingImg = IMG[1];
 			}
 			else {
-				updatingImage = IMG[2];
+				updatingImg = IMG[2];
 			}
-			Image scaledImage = updatingImage.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
-					/ 3, Image.SCALE_DEFAULT);
+			Image scaledImage = scalaImg(updatingImg);
 			lblPng.setIcon(new ImageIcon(scaledImage));
+	}
+	private Image scalaImg(ImageIcon i) {
+	    return i.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
+			/ 3, Image.SCALE_DEFAULT);
 	}
 	
 }
