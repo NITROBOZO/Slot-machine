@@ -31,16 +31,16 @@ public class Controller implements ActionListener {
 		slot.gioca();
 		new Thread(() -> {//cosi chiamando la sleep non vado a toccare il thread della gui
 			for (int i = 0; i < 11; i++) {
-				int cc = i;
+				int cc = i % 4;
 				String txt = "GIOCANDO";
 				SwingUtilities.invokeLater(() -> {//invokelater per andare a chiamare il prima possibile questo codice
-					if (cc == 0 || cc == 4 || cc == 8) {
+					if (cc == 0) {
 						window.getLblVincita().setText(txt);
-					} else if (cc == 1 || cc == 5 || cc == 9) {
+					} else if (cc == 1) {
 						window.getLblVincita().setText(txt + ".");
-					} else if (cc == 2 || cc == 6 || cc == 10) {
+					} else if (cc == 2) {
 						window.getLblVincita().setText(txt + "..");
-					} else if (cc == 3 || cc == 7 || cc == 11) {
+					} else if (cc == 3) {
 						window.getLblVincita().setText(txt + "...");
 					}
 				});
