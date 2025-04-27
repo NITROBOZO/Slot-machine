@@ -2,25 +2,24 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.Image;
-
 import javax.swing.JTextField;
-import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.Component;
 
 public class GameWindow extends JFrame {
-	private static final String[] IMAGES = {"/view/OK1.png","/view/OK2.png","/view/OK3.gif"};
+	private static final URL[] IMAGES = {GameWindow.class.getResource("/view/OK1.png"),
+						GameWindow.class.getResource("/view/OK2.png"),
+						GameWindow.class.getResource("/view/OK3.gif")};
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField box1;
@@ -86,7 +85,7 @@ public class GameWindow extends JFrame {
 		
 		
 		lblPng = new JLabel();
-		image = new ImageIcon(GameWindow.class.getResource(IMAGES[0]));
+		image = new ImageIcon(IMAGES[0]);
 		Image scaledImage = image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblPng.setIcon(new ImageIcon(scaledImage));
 		lblPng.setVisible(false);
@@ -132,7 +131,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(btnGioca);
 		
 		lblGif = new JLabel();
-		ImageIcon gif = new ImageIcon(GameWindow.class.getResource(IMAGES[2]));
+		ImageIcon gif = new ImageIcon(IMAGES[2]);
 		Image scaledGif = gif.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblGif.setIcon(new ImageIcon(scaledGif));
 		lblGif.setVisible(false);
@@ -146,7 +145,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(lblVincita);
 		
 		lblPng2 = new JLabel();
-		ImageIcon image2 = new ImageIcon(GameWindow.class.getResource(IMAGES[1]));
+		ImageIcon image2 = new ImageIcon(IMAGES[1]);
 		Image scaledImage2 = image2.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblPng2.setIcon(new ImageIcon(scaledImage2));
 		lblPng2.setVisible(false);
@@ -196,7 +195,7 @@ public class GameWindow extends JFrame {
 		}
 	}
 	public void resetImg1() {
-		image = new ImageIcon(GameWindow.class.getResource(IMAGES[0]));
+		image = new ImageIcon(IMAGES[0]);
 		Image scaledImage = image.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
 				/ 3, Image.SCALE_DEFAULT);
 		lblPng.setIcon(new ImageIcon(scaledImage));
@@ -205,13 +204,13 @@ public class GameWindow extends JFrame {
 		Double n;
 			n = Math.random();
 			if(n<=0.333) {
-				image = new ImageIcon(GameWindow.class.getResource(IMAGES[0]));
+				image = new ImageIcon(IMAGES[0]);
 			}
 			else if(n<=0.666) {
-				image = new ImageIcon(GameWindow.class.getResource(IMAGES[1]));
+				image = new ImageIcon(IMAGES[1]);
 			}
 			else {
-				image = new ImageIcon(GameWindow.class.getResource(IMAGES[2]));
+				image = new ImageIcon(IMAGES[2]);
 			}
 			Image scaledImage = image.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
 					/ 3, Image.SCALE_DEFAULT);
