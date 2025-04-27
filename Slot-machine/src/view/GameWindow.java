@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,9 +16,9 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class GameWindow extends JFrame {
-	private static final URL[] IMAGES = {GameWindow.class.getResource("/view/OK1.png"),
-						GameWindow.class.getResource("/view/OK2.png"),
-						GameWindow.class.getResource("/view/OK3.gif")};
+	private static final ImageIcon[] IMG = {new ImageIcon(GameWindow.class.getResource("/view/OK1.png")),
+						new ImageIcon(GameWindow.class.getResource("/view/OK2.png")),
+						new ImageIcon(GameWindow.class.getResource("/view/OK3.gif"))};
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField box1;
@@ -31,7 +30,7 @@ public class GameWindow extends JFrame {
 	private JLabel lblPng;
 	private JLabel lblPng2;
 	private JLabel lblGif;
-	private ImageIcon image;
+	private ImageIcon updatingImage;
 	
 	public JTextField getBox1() {
 		return box1;
@@ -71,6 +70,7 @@ public class GameWindow extends JFrame {
 	
 	
 	public GameWindow() {
+	    	updatingImage = IMG[0];
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -85,8 +85,7 @@ public class GameWindow extends JFrame {
 		
 		
 		lblPng = new JLabel();
-		image = new ImageIcon(IMAGES[0]);
-		Image scaledImage = image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+		Image scaledImage = IMG[0].getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblPng.setIcon(new ImageIcon(scaledImage));
 		lblPng.setVisible(false);
 		lblPng.setHorizontalAlignment(JLabel.CENTER);
@@ -131,8 +130,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(btnGioca);
 		
 		lblGif = new JLabel();
-		ImageIcon gif = new ImageIcon(IMAGES[2]);
-		Image scaledGif = gif.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+		Image scaledGif = IMG[2].getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblGif.setIcon(new ImageIcon(scaledGif));
 		lblGif.setVisible(false);
 		lblGif.setHorizontalAlignment(JLabel.CENTER);
@@ -145,8 +143,7 @@ public class GameWindow extends JFrame {
 		contentPane.add(lblVincita);
 		
 		lblPng2 = new JLabel();
-		ImageIcon image2 = new ImageIcon(IMAGES[1]);
-		Image scaledImage2 = image2.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+		Image scaledImage2 = IMG[1].getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		lblPng2.setIcon(new ImageIcon(scaledImage2));
 		lblPng2.setVisible(false);
 		lblPng2.setHorizontalAlignment(JLabel.CENTER);
@@ -162,9 +159,9 @@ public class GameWindow extends JFrame {
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
-				fontSet(lblPng,image);
-				fontSet(lblPng2,image2);
-				fontSet(lblGif,gif);
+				fontSet(lblPng,updatingImage);
+				fontSet(lblPng2,IMG[1]);
+				fontSet(lblGif,IMG[2]);
 				fontSet(box1);
 				fontSet(box2);
 				fontSet(box3);
@@ -177,6 +174,7 @@ public class GameWindow extends JFrame {
 	private void fontSet(JLabel lbl, ImageIcon i) {
 		Image scaledImage = i.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
 				/ 3, Image.SCALE_DEFAULT);
+
 		lbl.setIcon(new ImageIcon(scaledImage));
 		}
 	private void fontSet(Object i) {
@@ -195,8 +193,7 @@ public class GameWindow extends JFrame {
 		}
 	}
 	public void resetImg1() {
-		image = new ImageIcon(IMAGES[0]);
-		Image scaledImage = image.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
+		Image scaledImage = IMG[0].getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
 				/ 3, Image.SCALE_DEFAULT);
 		lblPng.setIcon(new ImageIcon(scaledImage));
 	}
@@ -204,15 +201,15 @@ public class GameWindow extends JFrame {
 		Double n;
 			n = Math.random();
 			if(n<=0.333) {
-				image = new ImageIcon(IMAGES[0]);
+				updatingImage = IMG[0];
 			}
 			else if(n<=0.666) {
-				image = new ImageIcon(IMAGES[1]);
+				updatingImage = IMG[1];
 			}
 			else {
-				image = new ImageIcon(IMAGES[2]);
+				updatingImage = IMG[2];
 			}
-			Image scaledImage = image.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
+			Image scaledImage = updatingImage.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
 					/ 3, Image.SCALE_DEFAULT);
 			lblPng.setIcon(new ImageIcon(scaledImage));
 	}
