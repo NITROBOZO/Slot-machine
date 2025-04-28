@@ -16,9 +16,12 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class GameWindow extends JFrame {
-	private static final ImageIcon[] IMG = {new ImageIcon(GameWindow.class.getResource("/view/OK1.png")),
-						new ImageIcon(GameWindow.class.getResource("/view/OK2.png")),
-						new ImageIcon(GameWindow.class.getResource("/view/OK3.gif"))};
+	public static final ImageIcon[] IMG = {new ImageIcon(GameWindow.class.getResource("/images/OK1.png")),
+										new ImageIcon(GameWindow.class.getResource("/images/OK2.png")),
+										new ImageIcon(GameWindow.class.getResource("/images/OK3.gif")),
+										new ImageIcon(GameWindow.class.getResource("/images/LOSE1.png")),
+										new ImageIcon(GameWindow.class.getResource("/images/LOSE2.gif")),
+										new ImageIcon(GameWindow.class.getResource("/images/LOSE3.png"))};
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField box1;
@@ -31,6 +34,14 @@ public class GameWindow extends JFrame {
 	private JLabel lblPng2;
 	private JLabel lblGif;
 	private ImageIcon updatingImg;
+	
+	public ImageIcon getUpdatingImg() {
+		return updatingImg;
+	}
+
+	public void setUpdatingImg(ImageIcon updatingImg) {
+		this.updatingImg = updatingImg;
+	}
 	
 	public JTextField getBox1() {
 		return box1;
@@ -190,27 +201,8 @@ public class GameWindow extends JFrame {
 			j.setFont(new Font("Tahoma", Font.PLAIN, Math.min(98, w / 20)));
 		}
 	}
-	public void resetImg1() {
-	    updatingImg = IMG[0];
-	    Image scaledImage = scalaImg(updatingImg);
-	    lblPng.setIcon(new ImageIcon(scaledImage));
-	}
-	public void updateImg1() {
-		Double n;
-			n = Math.random();
-			if(n<=0.333) {
-				updatingImg = IMG[0];
-			}
-			else if(n<=0.666) {
-				updatingImg = IMG[1];
-			}
-			else {
-				updatingImg = IMG[2];
-			}
-			Image scaledImage = scalaImg(updatingImg);
-			lblPng.setIcon(new ImageIcon(scaledImage));
-	}
-	private Image scalaImg(ImageIcon i) {
+	
+	public Image scalaImg(ImageIcon i) {
 	    return i.getImage().getScaledInstance((int) (contentPane.getWidth() / 4.5), contentPane.getHeight()
 			/ 3, Image.SCALE_DEFAULT);
 	}
