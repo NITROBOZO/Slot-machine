@@ -36,13 +36,27 @@ public class SlotMachine {
 	
 	public int getNumeriUguali() {
 		if (numeri[0] == numeri[1] && numeri[1] == numeri[2]) {
-			monete += jackpot;
 			return 3;
 		} else if (numeri[0] == numeri[1] || numeri[0] == numeri[2] || numeri[1] == numeri[2]) {
-			jackpot -= 3;
-			monete += 3;
 			return 2;
 		}
 		return 0;
+	}
+	public void aggiornaValori() {
+		int n = getNumeriUguali();
+		switch(n) {
+			case 2:{
+				jackpot -= 3;
+				monete += 3;
+			}break;
+			case 3:{
+				monete += jackpot;
+				jackpot=0;
+			}break;
+			default: break;
+		}
+	}
+	public boolean isGiocoFinito() {
+		return (jackpot == 0 || monete ==0) ? true : false;
 	}
 }

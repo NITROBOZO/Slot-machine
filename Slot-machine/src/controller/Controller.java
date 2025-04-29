@@ -26,7 +26,7 @@ public class Controller implements ActionListener {
 		bgm.loop();
 		window = new GameWindow();
 		slot = new SlotMachine();
-		window.getLblMonete().setText("<html><center>MONETE<br>" + Integer.toString(slot.getMonete())
+		window.getLblMonete().setText("<html><center>MONETE<br>" + slot.getMonete()
 				+ "</center></html>");
 		window.setVisible(true);
 		window.getBtnGioca().addActionListener(this);
@@ -39,6 +39,8 @@ public class Controller implements ActionListener {
 		window.getLblPng2().setVisible(false);
 		window.getBtnGioca().setEnabled(false);
 		slot.gioca();
+		window.getLblMonete().setText("<html><center>MONETE<br>" + slot.getMonete()
+		+ "</center></html>");
 		new Thread(() -> {
 			for (int i = 0; i < 11; i++) {
 				int cc = i % 4;
@@ -95,9 +97,13 @@ public class Controller implements ActionListener {
 				window.getLblVincita().setText("<html><center>JACKPOT<br>HAI VINTO " + slot.getJackpot()
 						+ " MONETE!</center></html>");
 			}
-			window.getLblMonete().setText("<html><center>MONETE<br>" + Integer.toString(slot.getMonete())
+			slot.aggiornaValori();
+			window.getLblMonete().setText("<html><center>MONETE<br>" + slot.getMonete()
 					+ "</center></html>");
-			window.getBtnGioca().setEnabled(true);
+			if(!slot.isGiocoFinito()) {
+				window.getBtnGioca().setEnabled(true);
+			}
+			
 		}).start();
 		
 	}
