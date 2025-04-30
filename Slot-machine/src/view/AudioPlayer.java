@@ -8,8 +8,8 @@ public class AudioPlayer {
 	public AudioPlayer(String pathSuono) {
         try {
             URL suonoURL = getClass().getResource(pathSuono);
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(suonoURL);
             suono = AudioSystem.getClip();
+            AudioInputStream audioInput = AudioSystem.getAudioInputStream(suonoURL);
             suono.open(audioInput);
             
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
